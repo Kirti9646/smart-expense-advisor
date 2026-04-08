@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Expense Advisor — Premium</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Gold theme extras */
+    .gold-text { color: #C9A856; }
+    .gold-bg { background-color: #C9A856; }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    body {
+      background: #faf7f2;
+    }
+  </style>
+</head>
+
+<body class="p-8">
+
+  <!-- HEADER -->
+  <h1 class="text-4xl font-bold gold-text mb-6">
+    Smart Expense Advisor
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Add Expense Card -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4 gold-text">➕ Add Expense</h2>
+
+      <form id="expenseForm" onsubmit="return addExpense();" class="space-y-3">
+
+        <input type="date" id="date" class="w-full border p-2 rounded" required>
+
+        <select id="category" class="w-full border p-2 rounded">
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Rent</option>
+          <option>Subscriptions</option>
+          <option>Shopping</option>
+          <option>Others</option>
+        </select>
+
+        <input type="number" id="amount" placeholder="Amount"
+               class="w-full border p-2 rounded" required>
+
+        <input type="text" id="notes" placeholder="Notes"
+               class="w-full border p-2 rounded">
+
+        <button class="gold-bg text-white px-4 py-2 rounded w-full hover:bg-yellow-600">
+          Add Expense
+        </button>
+      </form>
+
+      <hr class="my-4">
+
+      <h2 class="text-xl font-semibold gold-text">📊 Prediction</h2>
+      <p id="predictionBox" class="text-gray-600">Load data → Click Predict</p>
+
+      <button onclick="doPredict()"
+              class="mt-3 border gold-text border-yellow-600 px-4 py-2 rounded hover:bg-yellow-100">
+        Predict Next Month
+      </button>
+    </div>
+
+    <!-- Charts Card -->
+    <div class="space-y-6">
+      <div class="card">
+        <h2 class="text-lg font-semibold gold-text">📅 Monthly Spend</h2>
+        <canvas id="monthlyChart" class="mt-3"></canvas>
+      </div>
+
+      <div class="card">
+        <h2 class="text-lg font-semibold gold-text">🍽 Category-wise Spend</h2>
+        <canvas id="catChart" class="mt-3"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="card mt-8">
+    <h2 class="text-xl font-semibold gold-text mb-3">🧾 Recent Transactions</h2>
+
+    <table class="w-full text-left">
+      <thead>
+        <tr class="border-b text-gray-700">
+          <th class="p-2">Date</th>
+          <th class="p-2">Category</th>
+          <th class="p-2">Amount</th>
+          <th class="p-2">Notes</th>
+        </tr>
+      </thead>
+      <tbody id="txTable"></tbody>
+    </table>
+  </div>
+
+  <!-- JS -->
+  <script src="/static/main.js"></script>
+
+</body>
+</html>
