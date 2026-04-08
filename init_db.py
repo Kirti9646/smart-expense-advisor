@@ -30,4 +30,4 @@ for m in range(6,0,-1):
 cur.executemany("INSERT INTO expenses (date,category,amount,notes) VALUES (?,?,?,?)", rows)
 conn.commit()
 conn.close()
-print("DB initialized (expense.db).")
+print("DB initialized (expense.db).")  
