@@ -13,7 +13,10 @@ A web-based application to track, analyze, and predict personal expenses.
 - Python
 - Flask
 - SQLite
-- Machine Learning (basic)
+- Pandas
+- NumPy
+- Scikit-learn
+- Joblib
 
 ## How to Run
 
